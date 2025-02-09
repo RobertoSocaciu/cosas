@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz San Valentín, Paula</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #ff4e50, #fc913a);
+            font-family: 'Dancing Script', cursive;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeIn 2s ease-in-out;
+        }
+        p {
+            font-size: 1.5em;
+            max-width: 70%;
+            animation: fadeIn 3s ease-in-out;
+        }
+        .bubble {
+            position: absolute;
+            background: white;
+            color: #ff4e50;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1.2em;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            opacity: 0;
+            animation: floatUp 5s ease-in-out forwards;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(-100px); opacity: 1; }
+        }
+        .button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            background: white;
+            color: #ff4e50;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .button:hover {
+            background: #ff4e50;
+            color: white;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <audio id="loveSong" src="audio/Rels B, J Abecia - Te Regalo (Audio Oficial).mp3" loop></audio>
+    <div class="container" id="mainContainer">
+        <h1>Feliz San Valentín, Paula ❤️</h1>
+        <p>Eres la persona más especial de mi vida, y cada día a tu lado es un regalo. Te amo con todo mi corazón.</p>
+        <button class="button" onclick="showLove()">Presiona para más amor 💕</button>
+    </div>
+    <script>
+        const audio = document.getElementById("loveSong");
+        function playMusic() {
+            audio.volume = 0.1;
+            audio.play().catch(error => console.log("Reproducción automática bloqueada", error));
+        }
+        
+        function showLove() {
+            playMusic();
+            let phrases = [
+                "Eres mi todo 💖",
+                "Te amo más de lo que las palabras pueden decir 💕",
+                "Siempre juntos, mi amor 😘",
+                "Cada día a tu lado es mágico ✨",
+                "Eres mi sol en días grises ☀️",
+                "Tenerte a mi lado es mi mayor fortuna 💎",
+                "Amarte es lo mejor que me ha pasado ❤️",
+                "Tú y yo, por siempre juntos 💞",
+                "Tu amor ilumina mi vida 🌟",
+                "Eres el sueño del que nunca quiero despertar 🌙",
+                "Cada latido de mi corazón es por ti 💓",
+                "Gracias por hacer mi mundo más hermoso 🌍",
+                "A tu lado, la vida es un cuento de hadas 🏰",
+                "Eres la melodía que da ritmo a mi corazón 🎶",
+                "Nuestro amor es infinito ♾️"
+            ];
+            let bubble = document.createElement("div");
+            bubble.classList.add("bubble");
+            bubble.innerText = phrases[Math.floor(Math.random() * phrases.length)];
+            bubble.style.left = Math.random() * 80 + "vw";
+            bubble.style.top = Math.random() * 80 + "vh";
+            document.body.appendChild(bubble);
+            setTimeout(() => { bubble.remove(); }, 5000);
+        }
+    </script>
+</body>
+</html>
